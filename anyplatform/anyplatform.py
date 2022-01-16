@@ -19,15 +19,17 @@ class AnyPlatform(commands.Cog):
             return
 
         if message.author.bot:
+            # this is a bot, discard early
             return
 
         content = message.clean_content
         if len(content) == 0:
+            # nothing to do, exit early
             return
-        if content.lower().startswith("https://open.spotify.com/track/")
+        if content.lower().startswith("https://open.spotify.com/track/") or ("https://music.apple.com/"):
             try:
-                message = content
-                await message.channel.send("Hi, {message}".format(message=message),
+                url = content
+                await message.channel.send("https://song.link/{url}".format(url=url),
                                allowed_mentions=discord.AllowedMentions(
                                everyone=False, roles=False, users=False))
             except (discord.HTTPException, discord.Forbidden, ):
