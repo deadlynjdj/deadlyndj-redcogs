@@ -24,8 +24,7 @@ class AnyPlatform(commands.Cog):
         content = message.clean_content
         if len(content) == 0:
             return
-        if content.lower().startswith("https://open.spotify.com/track/") and not (':' in content) and \
-                        len(content) < 50:
+        if content.lower().startswith("https://open.spotify.com/track/")
             try:
                 message = content
                 await message.channel.send("Hi, {message}".format(message=message),
